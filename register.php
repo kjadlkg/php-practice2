@@ -1,3 +1,33 @@
+<?php
+include "db.php";
+
+$email = isset($_POST['email']) ? $_POST['email'] : null;
+$pw = isset($_POST['pw']) ? $_POST['pw'] : null;
+$name = isset($_POST['name']) ? $_POST['name'] : null;
+
+$stmt = $db->prepare("SELECT COUNT(user_id) FROM user WHERE user_email = ?");
+$stmt->bind_param('s', $email);
+$stmt->execute();
+$stmt->bind_result($user_count);
+$stmt->fetch();
+$stmt->close();
+
+if ($user_count == 1) {
+    echo "<script> alert('이미 존재하는 이메일입니다.'); location.href='register.php'; </script>";
+    exit();
+}
+
+$bcrypt_pw = password_hash($pw, PASSWORD_DEFAULT);
+
+$sql = query("INSERT INTO user(user_name, user_email, user_pw) VALUES('$name', '$email', '$pw')");
+
+if ($sql) {
+    echo "<script> alert('회원가입 완료되었습니다.'); location.href='index.php'; </script>";
+} else {
+    echo "<script> alert('회원가입에 실패했습니다.); </script>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
