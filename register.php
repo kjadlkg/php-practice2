@@ -1,30 +1,37 @@
 <?php
 include "db.php";
 
-$email = isset($_POST['email']) ? $_POST['email'] : null;
-$pw = isset($_POST['pw']) ? $_POST['pw'] : null;
-$name = isset($_POST['name']) ? $_POST['name'] : null;
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $name = isset($_POST['name']) ? $_POST['name'] : null;
+    $email = isset($_POST['email']) ? $_POST['email'] : null;
+    $pw = isset($_POST['pw']) ? $_POST['pw'] : null;
 
-$stmt = $db->prepare("SELECT COUNT(user_id) FROM user WHERE user_email = ?");
-$stmt->bind_param('s', $email);
-$stmt->execute();
-$stmt->bind_result($user_count);
-$stmt->fetch();
-$stmt->close();
+    if ($name == null || $pw == null || $email == null) {
+        echo "<script> alert('이름, 비밀번호, 이메일을 입력해주세요.'); </script>";
+        exit();
+    }
 
-if ($user_count == 1) {
-    echo "<script> alert('이미 존재하는 이메일입니다.'); location.href='register.php'; </script>";
-    exit();
-}
+    $stmt = $db->prepare("SELECT COUNT(user_id) FROM user WHERE user_email = ?");
+    $stmt->bind_param('s', $email);
+    $stmt->execute();
+    $stmt->bind_result($user_count);
+    $stmt->fetch();
+    $stmt->close();
 
-$bcrypt_pw = password_hash($pw, PASSWORD_DEFAULT);
+    if ($user_count == 1) {
+        echo "<script> alert('이미 존재하는 이메일입니다.'); location.href='register.php'; </script>";
+        exit();
+    }
 
-$sql = query("INSERT INTO user(user_name, user_email, user_pw) VALUES('$name', '$email', '$pw')");
+    $bcrypt_pw = password_hash($pw, PASSWORD_DEFAULT);
 
-if ($sql) {
-    echo "<script> alert('회원가입 완료되었습니다.'); location.href='index.php'; </script>";
-} else {
-    echo "<script> alert('회원가입에 실패했습니다.); </script>";
+    $sql = query("INSERT INTO user(user_name, user_email, user_pw) VALUES('$name', '$email', '$bcrypt_pw')");
+
+    if ($sql) {
+        echo "<script> alert('회원가입 완료되었습니다.'); location.href='index.php'; </script>";
+    } else {
+        echo "<script> alert('회원가입에 실패했습니다.); </script>";
+    }
 }
 ?>
 
