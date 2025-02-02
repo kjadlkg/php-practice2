@@ -1,24 +1,6 @@
 <?php
-include "db.php";
 session_start();
-
-$list_num = 10;
-$page_num = 10;
-$num = query('SELECT COUNT(*) AS total FROM board')->fetch_assoc()['total'];
-
-$page = isset($_GET['page']) ? $_GET['page'] : 1;
-$total_page = ceil($num / $list_num);
-$total_block = ceil($total_page / $page_num);
-$now_block = ceil($page / $page_num);
-$s_page = ($now_block * $page_num) - ($page_num - 1);
-if ($s_page <= 0)
-    $s_page = 1;
-$e_page = $now_block * $page_num;
-if ($total_page < $e_page)
-    $e_page = $total_page;
-
-$start = ($page - 1) * $list_num;
-$sql = query("SELECT * FROM board ORDER BY board_id DESC LIMIT $start, $list_num");
+include "db.php";
 ?>
 
 <!DOCTYPE html>
@@ -33,10 +15,10 @@ $sql = query("SELECT * FROM board ORDER BY board_id DESC LIMIT $start, $list_num
 <body>
     <div class="logunButton">
         <?php if (!isset($_SESSION["id"])) { ?>
-            <a href="login.php">로그인</a>
-            <a href="register.php">회원가입</a>
+        <a href="login.php">로그인</a>
+        <a href="register.php">회원가입</a>
         <?php } else { ?>
-            <a href="logout.php">로그아웃</a>
+        <a href="logout.php">로그아웃</a>
         <?php } ?>
     </div>
 
@@ -55,6 +37,23 @@ $sql = query("SELECT * FROM board ORDER BY board_id DESC LIMIT $start, $list_num
                 <th width="100">조회수</th>
             </tr>
             <?php
+            $list_num = 10;
+            $page_num = 10;
+            $num = query('SELECT COUNT(*) AS total FROM board')->fetch_assoc()['total'];
+
+            $page = isset($_GET['page']) ? $_GET['page'] : 1;
+            $total_page = ceil($num / $list_num);
+            $total_block = ceil($total_page / $page_num);
+            $now_block = ceil($page / $page_num);
+            $s_page = ($now_block * $page_num) - ($page_num - 1);
+            if ($s_page <= 0)
+                $s_page = 1;
+            $e_page = $now_block * $page_num;
+            if ($total_page < $e_page)
+                $e_page = $total_page;
+
+            $start = ($page - 1) * $list_num;
+            $sql = query("SELECT * FROM board ORDER BY board_id DESC LIMIT $start, $list_num");
             while ($row = $sql->fetch_array()) {
                 echo '<tr>';
                 echo '<td>' . $row['board_id'] . '</td>';
@@ -99,14 +98,14 @@ $sql = query("SELECT * FROM board ORDER BY board_id DESC LIMIT $start, $list_num
     </div>
 
     <script>
-        function writePost() {
-            <?php if (!isset($_SESSION['id'])) { ?>
-                alert('로그인이 필요합니다.');
-                location.href = 'login.php';
-            <?php } else { ?>
-                location.href = 'write.php';
-            <?php } ?>
-        }
+    function writePost() {
+        <?php if (!isset($_SESSION['id'])) { ?>
+        alert('로그인이 필요합니다.');
+        location.href = 'login.php';
+        <?php } else { ?>
+        location.href = 'write.php';
+        <?php } ?>
+    }
     </script>
 </body>
 

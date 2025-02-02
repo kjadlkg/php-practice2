@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pw = isset($_POST['pw']) ? $_POST['pw'] : null;
 
     if ($email == null || $pw == null) {
-        echo "<script> alert('이메일 또는는 비밀번호를 입력해주세요.'); </script>";
+        echo "<script> alert('이메일 또는 비밀번호를 입력해주세요.'); </script>";
         exit();
     }
 
