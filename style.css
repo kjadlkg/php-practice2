@@ -1,0 +1,203 @@
+* {
+  margin: auto;
+}
+
+body {
+  margin: 5%;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+h1,
+h4 {
+  padding-top: 20px;
+  text-align: center;
+}
+
+h4 {
+  margin-bottom: 10px;
+  font-weight: bolder;
+}
+
+table {
+  width: 80%;
+  margin: 50px auto;
+  border-collapse: collapse;
+}
+
+.login {
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+  border: 1px solid #7e7e7e;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #7e7e7e;
+  font-size: 15px;
+}
+
+.login input {
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.login td {
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.loginSubmit input {
+  width: 70%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #000000;
+  color: #ffffff;
+  font: bolder;
+}
+
+.index th {
+  border-top: solid 3px #7c7c7c;
+  border-bottom: solid 1px #a0a0a0;
+  font-weight: bolder;
+  padding: 10px;
+}
+
+.index td {
+  text-align: center;
+  border-bottom: solid 1px #a0a0a0;
+  padding: 10px;
+}
+
+button,
+.button {
+  margin-top: 50px;
+  margin-left: 85%;
+  padding: 5px 10px;
+  border-radius: 10%;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  font-size: 15px;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.page {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.page a,
+strong,
+.page span {
+  padding: 5px 10px;
+  margin: 0 5px;
+}
+
+.pagenum {
+  padding-top: 20px;
+}
+
+.write {
+  width: 60%;
+  text-align: center;
+  border: 1px solid #7e7e7e;
+  border-radius: 10px;
+  padding: 20px;
+  height: fit-content;
+}
+
+.write hr {
+  margin-top: 35px;
+}
+
+.write ul {
+  list-style: none;
+  margin-bottom: 0px;
+}
+
+.write li {
+  float: right;
+  margin-right: 10px;
+}
+
+.write button {
+  width: 50px;
+}
+
+.write form {
+  margin-top: 50px;
+}
+
+.write table {
+  border-collapse: collapse;
+}
+
+.write th {
+  vertical-align: top;
+  font-size: 20px;
+}
+
+.write th,
+.write td {
+  padding: 15px;
+}
+
+.write input,
+.write textarea {
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.write input :not(.button) {
+  height: 20px;
+}
+
+.write textarea {
+  height: 200px;
+  resize: none;
+}
+
+.view {
+  width: 60%;
+  margin: 50px auto;
+  border: 1px solid #7e7e7e;
+  border-radius: 10px;
+  padding: 20px;
+  height: fit-content;
+  box-shadow: 5px 5px 5px #7e7e7e;
+}
+
+.view h2 {
+  margin-bottom: 30px;
+}
+
+.view hr {
+  border: 1px solid #7e7e7e;
+  margin: 20px 0;
+}
+
+.view ul {
+  list-style: none;
+  margin-right: 50px;
+  margin-bottom: 0px;
+}
+
+.view li {
+  float: right;
+}
+
+.view button {
+  width: 60px;
+  margin-right: 15px;
+}

@@ -36,11 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>로그인</title>
 </head>
 
 <body>
-    <div>
+    <div class="login">
         <h1>로그인</h1>
         <form method="POST" action="login.php">
             <table>
@@ -52,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <td>비밀번호</td>
                     <td><input type="password" name="pw" required placeholder="비밀번호" size="40"></td>
                 </tr>
-                <tr>
+                <tr class="loginSubmit">
                     <td colspan="2"><input type="submit" value="로그인"></td>
                 </tr>
                 <tr>

@@ -9,6 +9,7 @@ include "db.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>게시판</title>
 </head>
 
@@ -19,7 +20,7 @@ include "db.php";
     $sql = query("SELECT * FROM board WHERE board_id = '$id'");
     $row = $sql->fetch_array();
     ?>
-    <div>
+    <div class="view">
         <h2><?php echo $row['board_title']; ?></h2>
         <div>
             <p><b>작성자 </b>

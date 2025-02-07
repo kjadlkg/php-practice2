@@ -24,11 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>글쓰기</title>
 </head>
 
 <body>
-    <div>
+    <div class="write">
         <h1>글을 작성하세요</h1>
         <hr>
         <form method="POST" action="write.php">
@@ -44,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </table>
             <ul>
                 <li><button onclick="location.href='index.php'">취소</button></li>
-                <li><input type="submit" value="작성"></li>
+                <li><input type="submit" class="button" value="작성"></li>
             </ul>
         </form>
     </div>
